@@ -5,7 +5,7 @@ using System.Text;
 namespace Mocoding.AspNetCore.Spa
 {
     public class SpaOptions
-    {
+    {   
         public SpaOptions()
         {
             IncludeScripts = true;

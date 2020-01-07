@@ -39,5 +39,12 @@
 	"postCreateCommand": "apt-get update && apt-get install -y git",
 
 	// Add the IDs of extensions you want installed when the container is created in the array below.
-	"extensions": []
+	"extensions": [
+		"ms-vscode.csharp",
+		"fudge.auto-using",
+		"formulahendry.dotnet-test-explorer",
+		"tintoy.msbuild-project-tools",
+		"eamodio.gitlens",
+		"christian-kohler.path-intellisense"
+	]
 }

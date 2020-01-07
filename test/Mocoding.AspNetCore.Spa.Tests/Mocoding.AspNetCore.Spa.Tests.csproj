@@ -2,19 +2,11 @@
 
   <PropertyGroup>
     <Authors>MOCODING LLC, Dennis Miasoutov</Authors>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <Compile Remove="TestData\**" />
-    <EmbeddedResource Remove="TestData\**" />
-    <None Remove="TestData\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Mocoding.Ofx.Client.Discover\Mocoding.Ofx.Client.Discover.csproj" />
-    <ProjectReference Include="..\..\src\Mocoding.Ofx.Client\Mocoding.Ofx.Client.csproj" />
-    <ProjectReference Include="..\..\src\Mocoding.Ofx\Mocoding.Ofx.csproj" />
+    <ProjectReference Include="../../src/Mocoding.AspNetCore.Spa/Mocoding.AspNetCore.Spa.csproj" />    
   </ItemGroup>
 
   <ItemGroup>
