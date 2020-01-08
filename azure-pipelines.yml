@@ -18,13 +18,8 @@ pool:
 
 variables:
   buildConfiguration: "Release"
-  projectName: "Mocoding.Ofx"
-  solutionFile: "ofx.sln"
-  # majorVersion: 2
-  # minorVersion: 0
-  # patchVersion: 0
-  # channelVersion: "-rc"
-  # buildVersion: $[format('-{0}.build', variables['Build.SourceBranchName'])]
+  projectName: "Mocoding.AspNetCore.Spa"
+  solutionFile: "aspnetcore-spa.sln"  
 
 steps:
   - task: UseGitVersion@5
@@ -39,6 +34,15 @@ steps:
       command: restore
       projects: $(solutionFile)
 
+  - task: SonarCloudPrepare@1
+    displayName: "Prepare Sonar Cloud"
+    inputs:
+      SonarCloud: 'sonarcloud'
+      organization: 'mocoding'
+      scannerMode: 'MSBuild'
+      projectKey: 'mocoding-software_aspnetcore-spa'
+      extraProperties: 'sonar.cs.opencover.reportsPaths=$(Agent.TempDirectory)/coverage.opencover.xml'
+
   - task: DotNetCoreCLI@2
     displayName: "dotnet build"
     inputs:
@@ -52,11 +56,17 @@ steps:
       projects: 'test/**/*.Tests.csproj'
       arguments: "--no-build /p:SkipCodeCoverageReport=true /p:Threshold=80 /p:CoverletOutput=$(Agent.TempDirectory)/"
 
+  - task: SonarCloudAnalyze@1
+
+  - task: SonarCloudPublish@1
+    inputs:
+      pollingTimeoutSec: '300'
+
   - task: PublishCodeCoverageResults@1
     displayName: "publish code coverage"
     inputs:
       codeCoverageTool: "Cobertura"
-      summaryFileLocation: "$(Agent.TempDirectory)/*.xml"
+      summaryFileLocation: "$(Agent.TempDirectory)/coverage.cobertura.xml"
     condition: succeededOrFailed()
 
   - task: DotNetCoreCLI@2
@@ -64,24 +74,6 @@ steps:
     inputs:
       command: pack
       packagesToPack: "src/$(projectName)/$(projectName).csproj"
-      configuration: $(buildConfiguration)
-      packDirectory: "$(Build.StagingDirectory)/$(projectName)"
-      buildProperties: "Version=$(Build.BuildNumber)"
-
-  - task: DotNetCoreCLI@2
-    displayName: "dotnet pack $(projectName).Client"
-    inputs:
-      command: pack
-      packagesToPack: "src/$(projectName).Client/$(projectName).Client.csproj"
-      configuration: $(buildConfiguration)
-      packDirectory: "$(Build.StagingDirectory)/$(projectName)"
-      buildProperties: "Version=$(Build.BuildNumber)"
-
-  - task: DotNetCoreCLI@2
-    displayName: "dotnet pack $(projectName).Client.Discover"
-    inputs:
-      command: pack
-      packagesToPack: "src/$(projectName).Client.Discover/$(projectName).Client.Discover.csproj"
       configuration: $(buildConfiguration)
       packDirectory: "$(Build.StagingDirectory)/$(projectName)"
       buildProperties: "Version=$(Build.BuildNumber)"
