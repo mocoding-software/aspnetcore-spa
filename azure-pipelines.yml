@@ -27,6 +27,13 @@ steps:
       versionSpec: '5.0.0'
       useConfigFile: true
       configFilePath: 'GitVersion.yml'
+
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core sdk'
+    inputs:
+      packageType: sdk
+      version: 2.0.0
+      installationPath: $(Agent.ToolsDirectory)/dotnet
       
   - task: UseDotNet@2
     displayName: 'Install .NET Core sdk'
@@ -34,7 +41,7 @@ steps:
       packageType: sdk
       version: 3.1.100
       installationPath: $(Agent.ToolsDirectory)/dotnet
-      
+
   - task: DotNetCoreCLI@2
     displayName: "dotnet restore"
     inputs:
