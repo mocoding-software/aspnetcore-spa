@@ -3,5 +3,5 @@
 bin
 obj
 .vs
-coverage.cobertura.xml
+coverage.*.xml
 .codecov
