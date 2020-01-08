@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
 namespace Mocoding.AspNetCore.Spa.Abstractions
 {
+    /// <summary>
+    /// Responsible to render html page on server.
+    /// </summary>
     public interface IServerRenderer
     {
-        public Task<string> RenderHtmlPage(HttpContext context);
+        /// <summary>
+        /// Renders the HTML page.
+        /// </summary>
+        /// <param name="context">Current http context.</param>
+        /// <returns>HTML.</returns>
+        public Task<string> RenderHtmlPageAsync(HttpContext context);
     }
 }

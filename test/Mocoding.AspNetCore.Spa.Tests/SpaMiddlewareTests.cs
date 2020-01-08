@@ -2,7 +2,6 @@ using System.Threading.Tasks;
 
 using System;
 using Microsoft.AspNetCore.Http;
-using Mocoding.AspNetCore.Spa;
 using Xunit;
 using NSubstitute;
 using Mocoding.AspNetCore.Spa.Abstractions;
@@ -22,8 +21,8 @@ namespace Mocoding.AspNetCore.Spa.Tests
             context.Response.Body = new MemoryStream();
             var renderer = Substitute.For<IServerRenderer>();                        
             const string expectedResponse = "<html></html>";
-            renderer.RenderHtmlPage(context).Returns(expectedResponse);
-            var middleware = new SpaMiddleware((context) => throw new InvalidOperationException());            
+            renderer.RenderHtmlPageAsync(context).Returns(expectedResponse);
+            var middleware = new SpaMiddleware((ctx) => throw new InvalidOperationException());            
             
             // act
             await middleware.InvokeAsync(context, renderer);
@@ -46,7 +45,7 @@ namespace Mocoding.AspNetCore.Spa.Tests
             context.Response.Body = new MemoryStream();
             var renderer = Substitute.For<IServerRenderer>();                                   
             var pass = false; 
-            var middleware = new SpaMiddleware((context) => { pass = true; return Task.FromResult(0); });            
+            var middleware = new SpaMiddleware((ctx) => { pass = true; return Task.FromResult(0); });            
             
             // act
             await middleware.InvokeAsync(context, renderer);            
@@ -65,8 +64,8 @@ namespace Mocoding.AspNetCore.Spa.Tests
             context.Response.Body = new MemoryStream();
             var renderer = Substitute.For<IServerRenderer>();                        
             const string expectedResponse = "<html></html>";
-            renderer.RenderHtmlPage(context).Returns(expectedResponse);
-            var middleware = new SpaMiddleware((context) => throw new InvalidOperationException());            
+            renderer.RenderHtmlPageAsync(context).Returns(expectedResponse);
+            var middleware = new SpaMiddleware((ctx) => throw new InvalidOperationException());            
             
             // act
             await middleware.InvokeAsync(context, renderer);

@@ -1,12 +1,8 @@
 using System.Threading.Tasks;
-
-using System;
 using Microsoft.AspNetCore.Http;
-using Mocoding.AspNetCore.Spa;
 using Xunit;
 using NSubstitute;
 using Mocoding.AspNetCore.Spa.Abstractions;
-using System.IO;
 using Mocoding.AspNetCore.Spa.Components;
 using Jering.Javascript.NodeJS;
 using Microsoft.Extensions.Options;
@@ -50,7 +46,7 @@ namespace Mocoding.AspNetCore.Spa.Tests
                 .Returns(Task.FromResult(doc.RootElement));
 
             // act
-            var actual = await renderer.RenderHtmlPage(context);
+            var actual = await renderer.RenderHtmlPageAsync(context);
 
             // assert                    
             Assert.Equal(expected, actual);

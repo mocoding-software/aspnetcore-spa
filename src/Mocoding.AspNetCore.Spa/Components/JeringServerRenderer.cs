@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Jering.Javascript.NodeJS;
 using Microsoft.AspNetCore.Http;
@@ -6,9 +7,11 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Options;
 using Mocoding.AspNetCore.Spa.Abstractions;
 
+[assembly: InternalsVisibleTo("Mocoding.AspNetCore.Spa.Tests")]
+
 namespace Mocoding.AspNetCore.Spa.Components
 {
-    public class JeringServerRenderer : IServerRenderer
+    internal class JeringServerRenderer : IServerRenderer
     {
         private readonly INodeJSService _jsService;
         private readonly IOptions<SpaOptions> _options;
@@ -22,7 +25,8 @@ namespace Mocoding.AspNetCore.Spa.Components
             _telemetryProvider = telemetryProvider;
             _assesResolver = assesResolver;
         }
-        public Task<string> RenderHtmlPage(HttpContext context)
+
+        public Task<string> RenderHtmlPageAsync(HttpContext context)
         {
             var requestFeature = context.Features.Get<IHttpRequestFeature>();
             var unencodedPathAndQuery = requestFeature.RawTarget;
@@ -35,17 +39,17 @@ namespace Mocoding.AspNetCore.Spa.Components
                 requestUrl = unencodedPathAndQuery,
                 baseUrl = baseUrl,
                 assets = _assesResolver.ResolveAssets(context),
-                inlineScripts = new[]{new InlineScript()
+                inlineScripts = new[]
                 {
-                    position = "top",
-                    script = _telemetryProvider.GetCodeSnippet()
-                }}
+                    new InlineScript()
+                    {
+                        position = "top",
+                        script = _telemetryProvider.GetCodeSnippet(),
+                    },
+                },
             };
 
-            var objectArgs = new object[]
-            {
-                props
-            };
+            var objectArgs = new object[] { props };
 
             return _jsService.InvokeFromFileAsync<JsonElement>(_options.Value.SsrScriptPath, "default", objectArgs)
                 .ContinueWith(task => task.Result.GetProperty("html").GetString());

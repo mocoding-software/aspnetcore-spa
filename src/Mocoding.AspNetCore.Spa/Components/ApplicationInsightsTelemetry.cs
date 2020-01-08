@@ -6,7 +6,7 @@ using Mocoding.AspNetCore.Spa.Abstractions;
 
 namespace Mocoding.AspNetCore.Spa.Components
 {
-    class ApplicationInsightsTelemetry : ITelemetryProvider
+    internal class ApplicationInsightsTelemetry : ITelemetryProvider
     {
         private readonly string _snippet;
 
@@ -17,6 +17,7 @@ namespace Mocoding.AspNetCore.Spa.Components
             var end = snippet.LastIndexOf("</script>", StringComparison.Ordinal);
             _snippet = snippet.Substring(start, end - start);
         }
+
         public string GetCodeSnippet()
         {
             return _snippet;
