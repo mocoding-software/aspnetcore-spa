@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <!--<Description>OFX Schema Object, OFX Parser and Sgml Parser for .NET Standard. Also includes Statement Parser for QFX files.</Description>
-    <PackageTags>netstandadrd;ofx;qfx;money;expense manager;finance;parser;serializer;sgml;treasure management</PackageTags>-->
+    <Description>Set of extensions to enable Single Page Application capabilities: React SSR, static files with cache, telemetry.</Description>
+    <PackageTags>spa;react;ssr;spa;</PackageTags>-->
     <PackageReleaseNotes>Refactoring and Redesign.</PackageReleaseNotes>
-    <!--<PackageIconUrl>https://mocoding.blob.core.windows.net/resources/ofx/nugetIcon.png</PackageIconUrl>-->
+    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/aspnetcore-spa/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
@@ -28,7 +28,5 @@
       <PrivateAssets>all</PrivateAssets>
       <Version>1.1.118</Version>
     </PackageReference>
-  </ItemGroup>
-
-  
+  </ItemGroup>  
 </Project>
