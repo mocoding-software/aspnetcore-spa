@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>Set of extensions to enable Single Page Application capabilities: React SSR, static files with cache, telemetry.</Description>
-    <PackageTags>spa;react;ssr;spa;</PackageTags>-->
-    <PackageReleaseNotes>Refactoring and Redesign.</PackageReleaseNotes>
+    <PackageTags>spa;react;ssr;spa;</PackageTags>
+    <PackageReleaseNotes>Initial Release.</PackageReleaseNotes>
     <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/aspnetcore-spa/master/LICENSE</PackageLicenseUrl>
