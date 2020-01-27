@@ -1,0 +1,7 @@
+*.lock.json
+*.user
+bin
+obj
+.vs
+coverage.*.xml
+.codecov
