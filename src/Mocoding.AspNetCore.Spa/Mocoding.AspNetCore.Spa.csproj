@@ -6,7 +6,7 @@
     <PackageTags>spa;react;ssr;spa;</PackageTags>
     <PackageReleaseNotes>Initial Release.</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon.png</PackageIconUrl>
+    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon64x64.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>    
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
