@@ -6,8 +6,7 @@
     <PackageTags>spa;react;ssr;spa;</PackageTags>
     <PackageReleaseNotes>Initial Release.</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/aspnetcore-spa/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>    
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/mocoding-software/aspnetcore-spa</RepositoryUrl>
@@ -18,9 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>    
-    <None Include="icon.png" Pack="true" PackagePath="\"/>
-    <None Include="LICENSE" Pack="true" PackagePath=""/>    
-</ItemGroup>
+    <None Include="../../icon.png" Pack="true" PackagePath="\"/>
+    <None Include="../../LICENSE" Pack="true" PackagePath="\"/>    
+  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
