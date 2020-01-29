@@ -1,13 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>Set of extensions to enable Single Page Application capabilities: React SSR, static files with cache, telemetry.</Description>
     <PackageTags>spa;react;ssr;spa;</PackageTags>
     <PackageReleaseNotes>Initial Release.</PackageReleaseNotes>
-    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/mocoding-software/aspnetcore-spa/master/LICENSE</PackageLicenseUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://mocoding.blob.core.windows.net/resources/aspnetcore-spa/nugetIcon64x64.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/mocoding-software/aspnetcore-spa</PackageProjectUrl>    
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/mocoding-software/aspnetcore-spa</RepositoryUrl>
     <CodeAnalysisRuleSet>..\..\_stylecop\StyleCop.ruleset</CodeAnalysisRuleSet>
@@ -16,6 +17,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>    
+    <None Include="../../icon.png" Pack="true" PackagePath=""/>
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>    
+  </ItemGroup>
+
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
@@ -23,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="Jering.Javascript.NodeJS" Version="5.3.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.1" />
     <PackageReference Include="StyleCop.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <Version>1.1.118</Version>
