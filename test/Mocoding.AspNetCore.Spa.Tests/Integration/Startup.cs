@@ -25,7 +25,7 @@ namespace Mocoding.AspNetCore.Spa.Tests.Integration
                 .AddMvcCore();
 
             services
-                .AddAppInsightsTelemetry(Configuration)
+                .AddAppInsightsTelemetry(Configuration, options => { options.EnableDebugLogger = true; })
                 .AddSpaRenderer();
 
         }
