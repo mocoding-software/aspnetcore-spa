@@ -1,5 +1,6 @@
 ﻿using System;
 using Jering.Javascript.NodeJS;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -65,7 +66,21 @@ namespace Mocoding.AspNetCore.Spa
         {
             return services
                 .AddApplicationInsightsTelemetry(configuration)
+                .AddApplicationInsightsTelemetryProcessor<ExcludeLocalhostPingProcessor>()
                 .AddSingleton<ITelemetryProvider, ApplicationInsightsTelemetry>();
+        }
+
+        /// <summary>
+        /// Adds the application insights telemetry.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="configureOptions">Configure Telemetry Options</param>
+        /// <returns>Service Collection.</returns>
+        public static IServiceCollection AddAppInsightsTelemetry(this IServiceCollection services, IConfiguration configuration, Action<ApplicationInsightsServiceOptions> configureOptions)
+        {
+            services.Configure(configureOptions);
+            return services.AddAppInsightsTelemetry(configuration);
         }
 
         /// <summary>
