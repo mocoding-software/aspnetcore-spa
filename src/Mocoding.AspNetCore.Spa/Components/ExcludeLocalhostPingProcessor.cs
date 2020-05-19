@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.ApplicationInsights.Channel;
+﻿using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace Mocoding.AspNetCore.Spa.Components
 {
-    /// <summary>
-    /// Exclude health check requests from telemetry.
-    /// </summary>
-    /// <seealso cref="Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor" />
-    internal class ExcludeLocalhostPingProcessor : ITelemetryProcessor
+  /// <summary>
+  /// Exclude health check requests from telemetry.
+  /// </summary>
+  /// <seealso cref="Microsoft.ApplicationInsights.Extensibility.ITelemetryProcessor" />
+  internal class ExcludeLocalhostPingProcessor : ITelemetryProcessor
     {
         private readonly ITelemetryProcessor _next;
 

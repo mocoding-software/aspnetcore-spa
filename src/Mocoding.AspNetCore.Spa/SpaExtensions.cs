@@ -75,7 +75,7 @@ namespace Mocoding.AspNetCore.Spa
         /// </summary>
         /// <param name="services">The services.</param>
         /// <param name="configuration">The configuration.</param>
-        /// <param name="configureOptions">Configure Telemetry Options</param>
+        /// <param name="configureOptions">Configure Telemetry Options.</param>
         /// <returns>Service Collection.</returns>
         public static IServiceCollection AddAppInsightsTelemetry(this IServiceCollection services, IConfiguration configuration, Action<ApplicationInsightsServiceOptions> configureOptions)
         {
