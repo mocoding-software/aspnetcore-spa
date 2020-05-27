@@ -12,7 +12,11 @@ namespace Mocoding.AspNetCore.Spa.Components
 
         public ApplicationInsightsTelemetry(TelemetryConfiguration config)
         {
-            _snippet = string.Format((IFormatProvider)CultureInfo.InvariantCulture, Resources.JavaScriptSnippet, $"instrumentationKey: \"{config.InstrumentationKey}\"", string.Empty);
+            var settings = @$"enableAutoRouteTracking: true,
+autoTrackPageVisitTime: true,
+disableFetchTracking: false,
+instrumentationKey: ""{config.InstrumentationKey}""";
+            _snippet = string.Format((IFormatProvider)CultureInfo.InvariantCulture, Resources.JavaScriptSnippet, settings, string.Empty);
         }
 
         public string GetCodeSnippet()
